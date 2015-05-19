@@ -1,0 +1,7 @@
+\.classpath
+\.project
+\.settings
+\.checkstyle
+target/
+META-INF/
+/webcontainer/mashapps/wavemaker/wavemaker-studio/src/main/webapp/images/Close_gray.png
