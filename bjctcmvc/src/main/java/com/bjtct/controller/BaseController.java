@@ -18,6 +18,7 @@
  * 
  */
 package com.bjtct.controller;
+
 /**
  * 
  */
@@ -41,111 +42,120 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.bjtct.dao.TeamDataDAO;
 import com.bjtct.form.TeamForm;
 import com.bjtct.form.TeamMemberForm;
+import com.bjtct.form.TeamRankingForm;
 import com.bjtct.pojo.Team;
 import com.bjtct.pojo.TeamMembers;
+
 @Controller
 @RequestMapping("/team")
 public class BaseController {
 
-	
-	
-	@RequestMapping(value="/home" ,method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) throws SQLException {
-		
-		//got all team list
-		List<Team> teamList = TeamDataDAO.getAllTeams();
-		List<TeamForm> teamFormList = new ArrayList<TeamForm>();
-		TeamForm tf = null;
-		try {
-			//preparing team form
-		if(null!=teamList && teamList.size()>0){
-		
-		for(Team t:teamList){
-			tf = new TeamForm();
-		Blob b = t.getLogo();
-		byte[] blobAsBytes = b.getBytes(1, (int)b.length());
-		byte[] encoded = Base64.encodeBase64(blobAsBytes);
-		String pic = new String(encoded);
-		
-		tf.setId(t.getId());
-		tf.setLogo(pic);
-		teamFormList.add(tf);
-		//model.addAttribute(t.getId().toString(), pic);
-		}
-		}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		model.addAttribute(teamFormList);
-		System.out.println(teamList.size());
-		return "teams/home";
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public String printWelcome(ModelMap model) throws SQLException {
 
-	}
-	
-	@RequestMapping(value="/getTeamPage" , method = RequestMethod.GET)
-	public String getTeam(@RequestParam("teamId") long teamId,ModelMap model) throws SQLException {
-		//Connection conn = JdbcConnection.getConnection();
-		Team t = TeamDataDAO.getTeam(teamId);
-		Long totalRecords = TeamDataDAO.getTotalRecordsCount(teamId);
-		Long firstRecordId = TeamDataDAO.getFirstRecordId(teamId);
-		System.out.println("Team Name:"+t.getName());
-		model.addAttribute("firstRecordId",firstRecordId);
-		model.addAttribute("totalRecordsCount",totalRecords);
-		model.addAttribute("teamId",t.getId());
-		model.addAttribute("team-name",t.getName());
-		model.addAttribute("describe",t.getDescribe());
-		return "teams/"+t.getName().toLowerCase().replaceAll("\\s+","");
+        // got all team list
+        List<Team> teamList = TeamDataDAO.getAllTeams();
+        List<TeamForm> teamFormList = new ArrayList<TeamForm>();
+        TeamForm tf = null;
+        try {
+            // preparing team form
+            if (null != teamList && teamList.size() > 0) {
 
-	}
-	
-	
-	@RequestMapping(value="/getNextTeamMember" , method = RequestMethod.GET,headers="Accept=*/*")
-	@ResponseBody
-	public String getTeamMember( HttpServletResponse response,
-			@RequestParam("teamId") long teamId,
-			@RequestParam("teamMemberId") long teamMemberId,
-			ModelMap model) throws SQLException {
-		String teamString = null;
-		response.setHeader("Pragma", "no-cache");
-		response.setHeader("Cache-Control",
-				"no-cache, max-age=0,must-revalidate, no-store");
-		response.setHeader("Expires", "-1");
-		
-		try{
-		
-		TeamMemberForm tm= TeamDataDAO.getNextTeamMember(teamId, teamMemberId);
-		
-		Team t = TeamDataDAO.getTeam(teamId);
-		
-		
-		System.out.println("TeamId:"+teamId);
-		System.out.println("TeamMemberId:"+teamMemberId);
-		System.out.println("TeamMember Name:"+tm.getmName());
-		
-		model.addAttribute("team-name",t.getName());
-		model.addAttribute("teamId",teamId);
-		
-		
-		
-		 teamString = new ObjectMapper().writeValueAsString(tm);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return teamString;
+                for (Team t : teamList) {
+                    tf = new TeamForm();
+                    Blob b = t.getLogo();
+                    byte[] blobAsBytes = b.getBytes(1, (int) b.length());
+                    byte[] encoded = Base64.encodeBase64(blobAsBytes);
+                    String pic = new String(encoded);
 
-	}
-	@RequestMapping(value="/addTeam", method=RequestMethod.GET,headers="Accept=*/*")
-	@ResponseBody
-	public String addTeam(@RequestParam("name") String name,@RequestParam("logo") File logo,@RequestParam("desc") String desc,@RequestParam("photo") File photo){
-		System.out.println(name);
-		System.out.println(logo);
-		System.out.println(desc);
-		System.out.println(photo);
-		return "success";
-	}
-	
-	
-	
-	
-	
+                    tf.setId(t.getId());
+                    tf.setLogo(pic);
+                    teamFormList.add(tf);
+                    // model.addAttribute(t.getId().toString(), pic);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute(teamFormList);
+        System.out.println(teamList.size());
+        return "teams/home";
+
+    }
+
+    @RequestMapping(value = "/getTeamPage", method = RequestMethod.GET)
+    public String getTeam(@RequestParam("teamId") long teamId, ModelMap model) throws SQLException {
+        // Connection conn = JdbcConnection.getConnection();
+        Team t = TeamDataDAO.getTeam(teamId);
+        Long totalRecords = TeamDataDAO.getTotalRecordsCount(teamId);
+        Long firstRecordId = TeamDataDAO.getFirstRecordId(teamId);
+        System.out.println("Team Name:" + t.getName());
+        model.addAttribute("firstRecordId", firstRecordId);
+        model.addAttribute("totalRecordsCount", totalRecords);
+        model.addAttribute("teamId", t.getId());
+        model.addAttribute("team-name", t.getName());
+        model.addAttribute("describe", t.getDescribe());
+        return "teams/" + t.getName().toLowerCase().replaceAll("\\s+", "");
+
+    }
+
+    @RequestMapping(value = "/getNextTeamMember", method = RequestMethod.GET, headers = "Accept=*/*")
+    @ResponseBody
+    public String getTeamMember(HttpServletResponse response, @RequestParam("teamId") long teamId, @RequestParam("teamMemberId") long teamMemberId, ModelMap model)
+            throws SQLException {
+        String teamString = null;
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Cache-Control", "no-cache, max-age=0,must-revalidate, no-store");
+        response.setHeader("Expires", "-1");
+
+        try {
+
+            TeamMemberForm tm = TeamDataDAO.getNextTeamMember(teamId, teamMemberId);
+
+            Team t = TeamDataDAO.getTeam(teamId);
+
+            System.out.println("TeamId:" + teamId);
+            System.out.println("TeamMemberId:" + teamMemberId);
+            System.out.println("TeamMember Name:" + tm.getmName());
+
+            model.addAttribute("team-name", t.getName());
+            model.addAttribute("teamId", teamId);
+
+            teamString = new ObjectMapper().writeValueAsString(tm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return teamString;
+
+    }
+
+    @RequestMapping(value = "/addTeam", method = RequestMethod.GET, headers = "Accept=*/*")
+    @ResponseBody
+    public String addTeam(@RequestParam("name") String name, @RequestParam("logo") File logo, @RequestParam("desc") String desc, @RequestParam("photo") File photo) {
+        System.out.println(name);
+        System.out.println(logo);
+        System.out.println(desc);
+        System.out.println(photo);
+        return "success";
+    }
+
+    @RequestMapping(value = "/getRatings", method = RequestMethod.GET, headers = "Accept=*/*")
+    @ResponseBody
+    public String getTeamRatings(@RequestParam("tabName") String tabName) {
+
+        List<TeamRankingForm> teamRankinglist = null;
+        String teamRankingString = null;
+        try {
+            teamRankinglist = new ArrayList<TeamRankingForm>();
+            System.out.println("[INFO] Getting team ratings for :" + tabName);
+            
+            teamRankinglist = TeamDataDAO.getRanking(tabName);
+            teamRankingString = new ObjectMapper().writeValueAsString(teamRankinglist);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return teamRankingString;
+    }
+
 }

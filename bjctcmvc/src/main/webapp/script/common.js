@@ -77,4 +77,64 @@ $(this).children().attr('src','../images/prevdimm.png');
 });
 
 
+
+/**
+ * Team statistics page scripts
+ * stops upto brk point if brk 0 means all records shows
+ */
+
+ var buildRankingTable=function(tabName,brk){
+	 var TABLE_TBODY = $('#ratings-body');
+	 var LAST_ROW = '<tr><td id="all-team-ranks" colspan="3" align="right" style="border-top: 1px solid #ffd419;">Click here to see all Teams</td></tr>';
+	 TABLE_TBODY.html('');
+	 
+	 $.ajax({
+		 method:'GET',
+		 url:"../team/getRatings.sec",
+		 contentType: "application/json; charset=utf-8",
+		 data:{tabName:tabName},
+		 success:function(data){
+		     var data = jQuery.parseJSON(data);
+		     console.log(data);
+		    for(var _i=0;_i<data.length;_i++){
+		     var row = '<tr><td align="center">'+ data[_i].rank+'</td><td>'+ data[_i].teamName+'</td><td align="center">'+data[_i].rating+'</td></tr>';
+		     TABLE_TBODY.append(row);
+		     if(brk!=0 && _i==brk-1){
+		    	 TABLE_TBODY.append(LAST_ROW);
+		    	 $('#all-team-ranks').click(function(){
+		    		 buildRankingTable(tabName,0);
+		    	 });
+		    	 
+		    	 break;
+		    	 }
+		     
+		     }
+		     
+		     
+		     
+		    
+         
+		         }
+		 });
+	 }
+	
+$('#team-statsTabLinks').click(function(evnt){
+	
+	
+	var selLi=$(evnt.target);
+	var k = selLi.addClass('selected').parent().siblings().children().removeClass('selected');
+	console.log(k);
+	console.log("[INFO] clicked on:"+selLi.text());
+	
+	if(selLi!==undefined){
+		buildRankingTable(selLi.text(),5);
+	}
+		
+	
+	
+	
+	
+});
+
+//team statisticks page scripts end 
 });
