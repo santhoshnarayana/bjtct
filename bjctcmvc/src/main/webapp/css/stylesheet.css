@@ -1,0 +1,670 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*Generic Reset*/
+html, body, header, footer, section, aside, article,
+h1, h2, h3, h4, div, span, img, hgroup, figure, strong, 
+p, b, ol, ul, li, a, input {
+	border: 0;
+	margin: 0px;
+	padding: 0px;
+	font-size: 16px;
+	list-style-type: none;
+	text-decoration: none;
+	font-family: Open Sans, "Trebuchet MS", Arial, Helvetica, sans-serif;
+	}
+	
+body {
+	/*background-color: #fffbd8;*/
+	background-size: 100%;
+	background-repeat: repeat-y;
+	background-attachment: scroll;
+	background-image: url(../images/bg.jpg);
+	}
+	
+#wrapper {
+	border-top: 4px solid #fffbd8;
+	/*background-repeat: repeat;
+	background-image: url(../images/bgPattern.jpg);*/
+	}
+	
+header {
+	width: 980px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0 20px 17px;
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+	}
+	
+header figure,
+header hgroup {
+	float: left;
+	}
+	
+header figure {
+	padding-top: 8px;
+	}
+	
+header hgroup {
+	padding-top: 20px;
+	padding-left: 15px;
+	}
+	
+header hgroup a h1,
+header hgroup a:hover h1,
+header hgroup a:visited h1 {
+	color: #fffbd8;
+	}
+		
+header hgroup h1 {
+	font-size: 1.5em;
+	text-transform: uppercase;
+	font-family: Open Sans, "Trebuchet MS", Arial, Helvetica, sans-serif;
+	}
+	
+header aside,
+header aside article {
+	float: right;
+	}
+	
+header aside article {
+	}
+	
+header aside article hgroup {
+	padding-top: 14px;
+	text-align: right;
+	padding-right: 10px;
+	font-family: Open Sans, "Trebuchet MS", Arial, Helvetica, sans-serif;
+	}
+	
+header aside article hgroup h2 {
+	color: #ffd419;
+	font-size: 16px;
+	}
+
+header aside article hgroup h3 {
+	/*color: #cb2607;*/
+	color: #fffbd8;
+	font-size: 14px;
+	font-weight: normal;
+	}
+
+header aside article figure {
+	width: 28px;
+	padding: 20px 7px 15px;
+	background-color: #fffbd8; /*#1b4263;*/
+	border-radius: 0 0 3px 3px;
+	}
+	
+nav#nav {
+	clear: both;
+	padding: 18px 0 12px;
+	}
+	
+nav#nav ul li {
+	/*float: left;*/
+	}
+	
+nav#nav ul li a {
+	color: #fffbd8;
+	padding: 0 15px;
+	display: inline-block;
+	}
+	
+nav#nav ul li span,
+#teamPageSubMenu span {
+	color: #fffbd8;
+	}
+	
+nav#nav ul li a:hover,
+nav#nav ul li a.current,
+#teamPageSubMenu a:hover {
+	color: #ffd419;
+	}
+	
+nav#nav ul li a.current {
+	font-weight:bold;
+	}
+
+/*/ Team Links Sub Menu Styles /*/	
+#subMenuQuickLinks {
+	width: 980px;
+	margin: 0 auto;
+	padding: 0 20px;
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+	}
+
+#teamHdr {
+	width:976px;
+	margin: 0 auto;
+	border: 2px solid #e6cb4a;
+	border-radius: 5px 5px 0 0;
+	background-repeat: repeat-y;
+	background-image: url(../images/teamHdrBg.jpg);
+	}
+	
+#teamHdr p {
+	color: #000000;
+	font-size: 1.2em;
+	padding: 5px 10px;
+	font-weight: bold;
+	}
+	
+#teamPageSubMenu {
+	width: 956px;
+	margin: 0 auto;
+	padding: 5px 10px;
+	text-align: center;
+	border-radius: 0 0 5px 5px;
+	border-left: 2px solid #e6cb4a;
+	border-right: 2px solid #e6cb4a;
+	border-bottom: 2px solid #e6cb4a;
+	}
+	
+#teamPageSubMenu a {
+	color: #fffbd8;
+	font-size: 0.75em;
+	padding: 0 4px;
+	display: inline-block;
+	}
+	
+#teamPageSubMenu a:first-child {
+	padding-left: 0;
+	}
+	
+#teamPageSubMenu a:last-child {
+	padding-right: 0;
+	}
+	
+#teamPageSubMenu span {
+	color: #fffbd8;
+	font-size: 0.8em;
+	}
+	
+/*/ Banner Styles /*/
+section#banner {
+	width: 100%;
+	height: 350px;
+	background-size: cover;
+	background-position: 100% 25%;
+	background-repeat:no-repeat;
+	background-image: url(../images/cricField.jpg);
+	}
+
+/*/ Team Logo Styles /*/	
+section#teamLogos {
+	/*background: url(../images/bgPattern.jpg) repeat #e23d1e;*/
+	}
+	
+section#teamLogos ul {
+	width: 980px;
+	margin: 0 auto;
+	padding: 34px 20px;
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+	}
+
+section#teamLogos ul li {
+	margin-bottom: 26px;
+	}
+	
+section#teamLogos ul li:last-child {
+	margin-bottom: 0px;
+	}
+
+section#teamLogos ul li a {
+	width: 138px;
+	height: 150px;
+	margin-left: 26px;
+	position: relative;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-image: url(../images/logobg.jpg);
+	}
+	
+section#teamLogos ul li a  span {
+	right: 10px;
+	bottom: 5px;
+	font-size: 0.75em;
+	position: absolute;
+	}
+	
+section#teamLogos ul li a:first-child {
+	margin-left: 0;
+	}
+
+/*/ Home Page Content Styles /*/
+section#content {
+	overflow: hidden;
+	background: url(../images/contentBg.jpg) repeat;
+	}
+	
+section#content article,
+section#contact article,
+section#footer article,
+#innerPageContent article {
+	width: 980px;
+	margin: 0 auto;
+	padding: 34px 20px;
+	}
+
+section#content article h1 {
+	color: #b41b00;
+	font-size: 1.2em;
+	font-weight: normal;
+	margin-bottom: 12px;
+	text-transform: uppercase;
+	font-family: Open Sans, "Trebuchet MS", Arial, Helvetica, sans-serif;
+	}
+	
+section#content article div {
+	float: left;
+	width: 476px;
+	}
+	
+section#content article div p {
+	font-size: 0.9em;
+	margin-bottom: 16px;
+	}
+	
+section#content article aside {
+	width: 474px;
+	float: right;
+	margin-left: 30px;
+	}
+
+section#content article aside p {
+	padding: 18px;
+	border-radius: 4px;
+	margin-bottom: 16px;
+	background-color: #ffd419;
+	border: 1px solid #eac009;
+	}
+
+/*/ Inner Page Content Styles /*/	
+section#innerPageContent {
+	width: 980px;
+	margin: 0 auto;
+	padding: 10px 20px;
+	/*padding: 34px 20px;*/
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+	}
+
+#innerPageContent article {
+	padding: 34px 0;
+	overflow: hidden;
+	}
+	
+/*/ Team Statistics /*/
+#teamStat {
+    width: 946px;
+    margin: 0 auto;
+	overflow: hidden;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 2px solid #e6cb4a;
+	}
+	
+#teamStat h1{
+	width: 366px;
+	float: left;
+	color: #ffd419;
+	font-size: 1.4em;
+	}
+	
+#Sort {
+	float: left;
+	width: 315px;
+	margin-top: 2px;
+	}
+	
+#Sort b {
+	color: #ffd419;
+	padding-right: 5px;
+	}
+	
+#Sort select {
+	min-width: 160px;
+	}
+
+#Sort select option {
+	padding: 1px;
+	}
+
+#Search {
+	width: 265px;
+	float: right;
+	font-size: 12px;
+	margin-top: 1.5px;
+	}
+	
+.search {
+	width: 180px;
+	padding: 5px;
+	font-size: 12px;
+	border-radius: 3px 0 0 3px;
+	}
+	
+.btn {
+	color: #000000;
+	padding: 4px 5px;
+	font-size: 12px;
+	cursor: pointer;
+	font-weight: bold;
+	background-color: #ffd419;
+	border-radius: 0 3px 3px 0;
+	}
+	
+#Team-statsLeftPanel {
+	float: left;
+	width: 315px;
+	min-height: 150px;
+	}
+	
+#Team-statsCenterPanel {
+	float: left;
+	width: 315px;
+	margin: 0 25px;
+	min-height: 150px;
+	}
+	
+#Team-statsRightPanel {
+	float: right;
+	width: 300px;
+	min-height: 150px;
+	}
+	
+h2.hdrTxt {
+	color: #ffd419;
+	font-size: 1.4em;
+	margin-bottom: 10px;
+	font-weight: normal;
+	font-family: Oswald,Open Sans Condensed,sans-serif;
+	}
+	
+.team-statsBlockContent, .team-statsRankingContent,
+.team-statsSeasonGlance, .team-statslatestNews,
+.team-statsgeneralStats {
+	padding: 10px;
+	margin-bottom: 20px;
+	border: 1px solid #ffd419;
+	}
+	
+.team-statsRankingContent, .team-statsSeasonGlance,
+.team-statsgeneralStats {
+	padding: 0;
+	}
+	
+.team-statsTabLinks {
+	height: 35px;
+	background-color: #ffd419;
+	}
+	
+.team-statsTabLinks ul li {
+	display: inline;
+	}
+	
+.team-statsTabLinks ul li a {
+	height: 35px;
+	float: right;
+	color: #000000;
+	padding: 0 13px;
+	font-size: 0.8em;
+	cursor: pointer;
+	line-height: 35px;
+	font-weight: normal;
+	text-transform: uppercase;
+	background-color: #ffd419;
+	font-family: Oswald,Open Sans Condensed,sans-serif;
+	}
+	
+.team-statsTabLinks ul li a.selected {
+	color: #ffd419;
+	background: #000000;
+	}
+	
+.bjtctStatsTbl table {
+	}
+	
+.bjtctStatsTbl table thead th {
+	padding: 4px;
+	color: #ffd419;
+	font-size: 13px;
+	border-top: 1px solid #ffd419;
+	border-right: 1px solid #ffd419;
+	border-bottom: 1px solid #ffd419;
+	}
+
+.bjtctStatsTbl table thead th.tbl-hdr {
+	padding: 4px 8px;
+	text-align: left;
+	}
+	
+.bjtctStatsTbl table thead th:last-child {border-right: none;}
+.bjtctStatsTbl table tbody td:last-child {border-right: none;}
+
+.bjtctStatsTbl table tbody td {
+	padding: 4px 8px;
+	color: #fffbd8;
+	font-size: 13px;
+	border-right: 1px solid #ffd419;
+	}
+	
+.fixturesults {
+	padding: 10px;
+	}
+	
+.fixturesults p,
+.latestNews p {
+	color: #fffbd8;
+	font-size: 13px;
+	margin-bottom: 12px;
+	}
+	
+.fixturesults p:last-child,
+.latestNews p:last-child {
+	margin-bottom: 0;
+	}
+	
+.fixturesults span,
+.latestNews span {
+	display: block;
+	font-size: 13px;
+	}
+	
+.fixturesults b,
+.latestNews b {
+	color: #ffd419;
+	font-size: 14px;
+	font-weight: bold;
+	}
+		
+/*/ Inner Team Page Content Styles /*/
+section#innerTeamPageContent {
+	width: 980px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 34px 20px;
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+	}
+
+section#innerTeamPageContent article {
+	padding: 0;
+	float: left;
+	width: 536px;
+	padding: 10px;
+	margin-right: 20px;
+	border-radius: 10px;
+	border: 2px solid #ffd419;
+	}
+	
+section#innerTeamPageContent article h1 {
+	color: #ffd419;
+	font-size: 1.2em;
+	margin-bottom: 16px;
+	border-bottom: 2px solid #ffd419;
+	}
+	
+section#innerTeamPageContent article p {
+	color: #fffbd8;
+	font-size: 0.9em;
+	margin-bottom: 16px;
+	}
+
+section#innerTeamPageContent aside {
+	float: right;
+	width: 380px;
+	padding: 10px;
+	border-radius: 10px;
+	background-repeat: repeat-y;
+	background-position:center center;
+	background-image: url(../images/teamPageBg.jpg);
+	/*background-color: #fffbd9;*/
+	}
+	
+section#innerTeamPageContent aside hgroup {
+	margin-bottom:12px;
+	border-bottom: 1px solid #b41b00;
+	}
+	
+section#innerTeamPageContent aside hgroup h1 {
+	color: #000000;
+	font-size: 1.2em;
+	font-weight:bold;
+	line-height: 1.2em;
+	}
+
+section#innerTeamPageContent aside hgroup h3 {
+	color: #b41b00;
+	font-size: 0.9em;
+	}
+	
+#playersProfile {
+	overflow: hidden;
+	position: relative;
+	}
+	
+#playersPho {
+	float: right;
+	width: 132px;
+	}
+	
+#playersPho img {
+	border: 1px solid #b41b00;
+	}
+	
+#PlayersInfo {
+	float: left;
+	width: 240px;
+	}
+	
+#PlayersInfo p {
+	}
+	
+#PlayersInfo b {
+	color: #b41b00;
+	font-size: 0.8em;
+	}
+
+#PlayersInfo span {
+	font-size: 0.8em;
+	}
+	
+#PlayersInfo span strong {
+	font-size: 1em;
+	font-weight: bold;
+	}
+	
+#navigationPP {
+	right: 20px;
+	bottom: 40px;
+	position: absolute;
+	}
+/*	
+.PPEmail a:link,
+.PPEmail a:hover {
+	color: #000000;
+	font-size: 1em;
+	}
+*/	
+a.PPEmail:link,
+a.PPEmail:hover {
+	color: #000000;
+	font-size: 1em;
+	}
+	
+/*/ Home Page Contact Styles /*/
+section#contact article {
+	padding:18px 0;
+	}
+
+section#contact {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: url(../images/cnct_bg.jpg);
+	}
+	
+div.contact {
+	padding: 10px 0;
+	overflow: hidden;
+	}
+	
+div.contactAdd,
+div.contactEmail {
+	float: left;
+	width: 300px;
+	padding: 15px;
+	color: #ffffff;
+	text-align: center;
+	position: relative;
+	border-radius: 4px;
+	border: 1px solid #ffffff;
+	}
+	
+div.contactAdd img.crc,
+div.contactEmail img.crc {
+	top: -11px;
+	left: 164px;
+	position: absolute;
+	}
+	
+div.contactAdd h2,
+div.contactEmail h2 {
+	font-size:16px;
+	font-weight: normal;
+	margin-bottom:12px;
+	text-transform: uppercase;
+	}
+	
+div.contactEmail a,
+div.contactEmail a:link {
+	color: #ffffff;
+	}
+
+div.contactEmail a:hover {
+	color: #cb2607;
+	}
+	
+div.contactEmail {
+	float: right;
+	}
+	
+/*/ Footer Styles /*/
+section#footer {
+	background: url(../images/contentBg.jpg) repeat;
+	}
+	
+section#footer article p {
+	font-size: 0.9em;
+	margin: 0 0 20px 0;
+	text-align: center;
+	}
+	
+section#footer p.copyright {
+	font-size: 0.75em;
+	margin-bottom: 0;
+	}
+	
+.clear {
+	clear: both;
+	}
