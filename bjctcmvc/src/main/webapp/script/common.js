@@ -177,7 +177,7 @@ $(document).ready(function() {
                     var data = jQuery.parseJSON(data);
                     console.log(data);
                     for (var _i = 0; _i < data.length; _i++) {
-                        var datap = '<p><b>' + data[_i].leftTeamName + ' Vs ' + data[_i].rightTeamName + '</b>  <span>' + data[_i].winningTeamName +'won by '+data[_i].wonBy+'</span> </p>';
+                        var datap = '<p><b>' + data[_i].leftTeamName + ' Vs ' + data[_i].rightTeamName + '</b>  <span>' + data[_i].winningTeamName +' won by '+data[_i].wonBy+'</span> </p>';
 
 
                         DIV_ID.append(datap);
