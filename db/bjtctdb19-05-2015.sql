@@ -111,7 +111,7 @@ DROP TABLE IF EXISTS `fixtures`;
 CREATE TABLE `fixtures` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `leftTeamId` int(10) unsigned NOT NULL,
-  `rigitTeamId` int(10) unsigned NOT NULL,
+  `rightTeamId` int(10) unsigned NOT NULL,
   `venue` varchar(500) NOT NULL,
   `date` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
@@ -122,7 +122,7 @@ CREATE TABLE `fixtures` (
 --
 
 /*!40000 ALTER TABLE `fixtures` DISABLE KEYS */;
-INSERT INTO `fixtures` (`id`,`leftTeamId`,`rigitTeamId`,`venue`,`date`) VALUES 
+INSERT INTO `fixtures` (`id`,`leftTeamId`,`rightTeamId`,`venue`,`date`) VALUES 
  (1,1,2,'Bangalore','Fri 15th May  2015 09:00 IST'),
  (2,3,4,'Chennai','Sun 16th May  2015 09:00 IST'),
  (3,5,6,'Mumbai','Tue 18th May 2015 15:00  IST');
@@ -166,6 +166,32 @@ CREATE TABLE `latest_news` (
 
 /*!40000 ALTER TABLE `latest_news` DISABLE KEYS */;
 /*!40000 ALTER TABLE `latest_news` ENABLE KEYS */;
+
+
+--
+-- Definition of table `results`
+--
+
+DROP TABLE IF EXISTS `results`;
+CREATE TABLE `results` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `leftTeamId` int(10) unsigned NOT NULL,
+  `rightTeamId` int(10) unsigned NOT NULL,
+  `winningTeamId` int(10) unsigned NOT NULL,
+  `wonedby` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `results`
+--
+
+/*!40000 ALTER TABLE `results` DISABLE KEYS */;
+INSERT INTO `results` (`id`,`leftTeamId`,`rightTeamId`,`winningTeamId`,`wonedby`) VALUES 
+ (1,1,2,1,'60 runs'),
+ (2,2,3,3,'7 wickets'),
+ (3,5,4,5,'38 runs');
+/*!40000 ALTER TABLE `results` ENABLE KEYS */;
 
 
 --

@@ -12,6 +12,8 @@ import java.util.List;
 import org.apache.commons.codec.binary.Base64;
 
 import com.bjtct.connection.JdbcConnection;
+import com.bjtct.form.FixturesForm;
+import com.bjtct.form.ResultsForm;
 import com.bjtct.form.TeamMemberForm;
 import com.bjtct.form.TeamRankingForm;
 import com.bjtct.pojo.Team;
@@ -255,4 +257,94 @@ public class TeamDataDAO {
 
     }
 
+    /**
+     * To get the Season at glance data of all teams by given tabName
+     * 
+     * @param tabName
+     * @return
+     */
+    public static List<FixturesForm> getSeasonAtGlance(String tabName) {
+
+        List<FixturesForm>fixturesFormList = null;
+        FixturesForm fixturesForm = null;
+        String query = SQLConstants.GET_SEASON_AT_GLANCE.replaceAll("#",tabName.toLowerCase().replaceAll("\\W", ""));
+        
+        System.out.println("[INFO] Generated Query:"+query);
+
+        try {
+            fixturesFormList = new ArrayList<FixturesForm>();
+            Connection con = JdbcConnection.getConnection();
+            PreparedStatement pstmt = con.prepareStatement(query);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                fixturesForm = new FixturesForm();
+                fixturesForm.setId(rs.getLong("id"));
+                fixturesForm.setLeftTeamId(rs.getLong("leftTeamid"));
+                fixturesForm.setRightTeamId(rs.getLong("rightTeamid"));
+                fixturesForm.setLeftTeamName(getTeam(con, rs.getLong("leftTeamid")).getName());
+                fixturesForm.setRightTeamName(getTeam(con, rs.getLong("rightTeamid")).getName());
+                fixturesForm.setVenue(rs.getString("venue"));
+                fixturesForm.setDate(rs.getString("date"));
+                
+                fixturesFormList.add(fixturesForm);
+                
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return fixturesFormList;
+
+    }
+
+    /**
+     * To get the Season at RESUTLS data of all teams by given tabName
+     * 
+     * @param tabName
+     * @return
+     */
+    public static List<ResultsForm> getResults(String tabName) {
+
+        List<ResultsForm>resultsFormList = null;
+        ResultsForm resultsForm = null;
+        String query = SQLConstants.GET_RESULTS.replaceAll("#",tabName.toLowerCase().replaceAll("\\W", ""));
+        
+        System.out.println("[INFO] Generated Query:"+query);
+
+        try {
+            resultsFormList = new ArrayList<ResultsForm>();
+            Connection con = JdbcConnection.getConnection();
+            PreparedStatement pstmt = con.prepareStatement(query);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                resultsForm = new ResultsForm();
+                resultsForm.setId(rs.getLong("id"));
+                resultsForm.setLeftTeamId(rs.getLong("leftTeamid"));
+                resultsForm.setRightTeamId(rs.getLong("rightTeamid"));
+                resultsForm.setLeftTeamName(getTeam(con, rs.getLong("leftTeamid")).getName());
+                resultsForm.setRightTeamName(getTeam(con, rs.getLong("rightTeamid")).getName());
+                resultsForm.setWinningTeamId(rs.getLong("winningteamid"));
+                resultsForm.setWinningTeamName(getTeam(con, rs.getLong("winningteamid")).getName());
+                resultsForm.setWonBy(rs.getString("wonedby"));
+                
+                resultsFormList.add(resultsForm);
+                
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return resultsFormList;
+
+    }
+
+    
+    
+    
 }

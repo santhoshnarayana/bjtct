@@ -23,4 +23,7 @@ public class SQLConstants {
 
     public final static String GET_RANKING_BY_TAB_NAME     = "SELECT * FROM #_ranking ORDER BY rank";
 
+    public final static String GET_SEASON_AT_GLANCE     = "SELECT * FROM # ORDER BY date";
+    
+    public final static String GET_RESULTS = "SELECT * FROM #";
 }

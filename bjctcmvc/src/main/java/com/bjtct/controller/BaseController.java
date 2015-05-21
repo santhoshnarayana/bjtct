@@ -40,11 +40,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bjtct.dao.TeamDataDAO;
+import com.bjtct.form.FixturesForm;
+import com.bjtct.form.ResultsForm;
 import com.bjtct.form.TeamForm;
 import com.bjtct.form.TeamMemberForm;
 import com.bjtct.form.TeamRankingForm;
 import com.bjtct.pojo.Team;
-import com.bjtct.pojo.TeamMembers;
 
 @Controller
 @RequestMapping("/team")
@@ -138,7 +139,11 @@ public class BaseController {
         System.out.println(photo);
         return "success";
     }
-
+    
+    /**
+     * To get the get rating for the team wise
+     * 
+     * */
     @RequestMapping(value = "/getRatings", method = RequestMethod.GET, headers = "Accept=*/*")
     @ResponseBody
     public String getTeamRatings(@RequestParam("tabName") String tabName) {
@@ -157,5 +162,40 @@ public class BaseController {
         }
         return teamRankingString;
     }
+    
+    @RequestMapping(value = "/getSeasonAtGlance", method = RequestMethod.GET, headers = "Accept=*/*")
+    @ResponseBody
+    public String getSeasonAtGlance(@RequestParam("tabName") String tabName) {
+
+        
+        List<FixturesForm>fixturesFormList = null;
+        List<ResultsForm>resultsFormList = null;
+        String listString = null;
+        String resultsFormListString = null;
+        
+        try {
+            if(tabName!=null && tabName.equalsIgnoreCase("Fixtures")){
+            fixturesFormList = new ArrayList<FixturesForm>();
+            System.out.println("[INFO] Getting team ratings for :" + tabName);
+            
+            fixturesFormList = TeamDataDAO.getSeasonAtGlance(tabName);
+            listString = new ObjectMapper().writeValueAsString(fixturesFormList);
+            }
+            else if(tabName!=null && tabName.equalsIgnoreCase("Results")){
+                resultsFormList = new ArrayList<ResultsForm>();
+                System.out.println("[INFO] Getting team ratings for :" + tabName);
+                
+                resultsFormList = TeamDataDAO.getResults(tabName);
+                listString = new ObjectMapper().writeValueAsString(resultsFormList);
+                    
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listString;
+    }
+    
+    
 
 }
